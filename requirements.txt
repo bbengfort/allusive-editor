@@ -1,0 +1,9 @@
+altgraph==0.12
+coverage==3.7.1
+macholib==1.7
+modulegraph==0.12
+nose==1.3.3
+py2app==0.9
+python-dateutil==2.2
+six==1.7.3
+wsgiref==0.1.2
