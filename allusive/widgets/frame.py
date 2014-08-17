@@ -19,7 +19,8 @@ combined functionality so that they can be extended as needed.
 ##########################################################################
 
 import Tkinter as tk
-from .colors import *
+from ..colors import *
+from .text import ReadOnlyText
 
 ##########################################################################
 ## Constants
@@ -54,11 +55,14 @@ class AllusiveFrame(tk.Frame):
     def __init__(self, master, **options):
         tk.Frame.__init__(self, master)
 
+        # Set the readonly property
+        self.readonly = options.pop('readonly', False)
+
         # Configure the frame
         self.config(**options)
 
         # Set up the text widget
-        self.text = tk.Text(self)
+        self.text = tk.Text(self) if not self.readonly else ReadOnlyText(self)
         self.text_config()
         self.text.grid(row=0, column=0, padx=10, pady=10, sticky=tk.NW+tk.SE)
 

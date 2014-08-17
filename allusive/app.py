@@ -19,7 +19,7 @@ Main entry point for the allusive-editor
 
 import Tkinter as tk
 from .colors import *
-from .frame import *
+from .widgets import *
 
 ##########################################################################
 ## Constants
@@ -46,9 +46,15 @@ class AllusiveApp(tk.Tk, object):
         ## Initialize the widgets
         self.editor = AllusiveEditor(self)
         self.viewer = AllusiveViewer(self)
+        self.editor.text.bind("<Key>", self.sync_text)
 
         self.editor.grid(row=0, column=0, sticky=tk.NW+tk.SE)
         self.viewer.grid(row=0, column=1, sticky=tk.NW+tk.SE)
+
+    def sync_text(self, event):
+        self.viewer.text.config(state=tk.NORMAL)
+        self.viewer.text.insert("insert", event.char)
+        self.viewer.text.config(state=tk.DISABLED)
 
     def run(self):
         """
@@ -63,5 +69,7 @@ class AllusiveViewer(AllusiveFrame):
 
     def __init__(self, master, **options):
         options['background'] = TWILIGHT
+        options['readonly']   = True
+
         AllusiveFrame.__init__(self, master, **options)
         self.text_config(background=TWILIGHT)
