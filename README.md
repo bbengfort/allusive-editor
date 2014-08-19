@@ -7,6 +7,8 @@ Allusive Editor
 
 [![Allusive Editor][allusive.jpg]][allusive.jpg]
 
+Helpful tutorial on building text editors with Tkinter: [Vroom! A Simple DarkRoom Remake in Tkinter](http://effbot.org/zone/vroom.htm). Documentation on event bindings can be found at [Tkinter Events and Bindings](http://effbot.org/tkinterbook/tkinter-events-and-bindings.htm). We're currently having trouble with py2app, and are following [this thread](http://marc.info/?l=pythonmac-sig&m=120024539627774) to see if we can upgrade setuptools and modulegraph to get it to build. 
+
 <!-- References -->
 [build_status_img]: https://travis-ci.org/bbengfort/allusive-editor.svg?branch=master
 [build_status_page]: https://travis-ci.org/bbengfort/allusive-editor
